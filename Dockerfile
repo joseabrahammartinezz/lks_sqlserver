@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.6.9
 ENV PYTHONUNBUFFERED 1
 #### PREPARAMOS REQUISITOS PARA CONECTAR SQLSERVER
 
@@ -11,17 +11,19 @@ RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt
 RUN apt-get update
 RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17
 # optional: for bcp and sqlcmd
-sudo ACCEPT_EULA=Y apt-get install -y mssql-tools
-echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
-source ~/.bashrc
+RUN ACCEPT_EULA=Y apt-get install -y mssql-tools
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+#RUN source ~/.bashrc
 # optional: for unixODBC development headers
-sudo apt-get install -y unixodbc-dev
+RUN apt-get install -y unixodbc-dev
 
 #####  PARA EL BACKEND
 
 RUN mkdir /code
 WORKDIR /code
 COPY requirements.txt /code/
+COPY openssl.cnf /etc/ssl/openssl.cnf
+
 RUN pip install --upgrade pip
 #RUN apt-get update && apt-get install -y libgdal-dev g++ --no-install-recommends && \
 #    apt-get clean -y

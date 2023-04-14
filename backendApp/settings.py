@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_g7*xafveeh=$%sp6a4g%ltnho2de#@a0e*2$i^#@s9#q+(cnr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.86.173.62']
+ALLOWED_HOSTS = ['52.86.173.62','172.18.0.2']
 
 
 # Application definition
@@ -92,10 +92,10 @@ DATABASES = {
             'ENGINE': 'sql_server.pyodbc',
             'NAME': 'Ambar70',
             'USER': 'sa',
-#           'PASSWORD': '31n8731n', 
-            'PASSWORD': 'Acer56xxx%', 
-            'HOST': '172.17.0.1',
-#            'HOST': 'lks.dyndns.info',
+            'PASSWORD': '31n8731n', 
+#            'PASSWORD': 'Acer56xxx%', 
+#            'HOST': '172.17.0.1',
+            'HOST': 'lks.dyndns.info',
 #            'HOST': '181.115.210.12',
             'PORT': '1433',
             'OPTIONS': {
