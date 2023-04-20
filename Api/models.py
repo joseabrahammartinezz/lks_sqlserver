@@ -58,3 +58,78 @@ class Pedido_Materiais(models.Model):
     class Meta:
         managed = False
         db_table = 'PEDIDO_MATERIAIS'
+
+class VIEW_VENTAS(models.Model):
+    PEDIDO = models.IntegerField (primary_key= True)
+    EMPRESA = models.IntegerField ()
+    RAZAO_SOCIAL = models.CharField(max_length=100)
+    NOME = models.CharField(max_length=100)
+    DATA = models.DateTimeField()
+    VENDEDOR = models.CharField(max_length=30)
+    TOTAL_PAGO = models.FloatField()
+    TOTAL_PEDIDO = models.FloatField()
+    OBS = models.TextField()
+    POSICAO = models.CharField(max_length=15)
+    DTFECHAMENTO = models.DateTimeField()
+    TOTAL_PRODUTOS = models.FloatField()
+    AUTOID = models.IntegerField()
+    CODID = models.IntegerField()
+    COD_INTERNO = models.CharField(max_length=30)
+    COD_PEDIDO = models.CharField(max_length=30)
+    DESCRICAOPROD = models.CharField(max_length=70)
+    QUANT = models.FloatField()
+    VLR_GARANTIA = models.FloatField()
+    VLR_CUSTO = models.FloatField()
+    VLR_UNIT = models.FloatField()
+    VLR_TABELA = models.FloatField()
+    VLR_TOTAL = models.FloatField()
+
+    class Meta:
+        unique_together = (('PEDIDO', 'EMPRESA'),)
+    
+    class Meta:
+        managed = False
+        db_table = 'VIEW_VENTAS'    
+
+class VIEW_MASTER(models.Model):
+    PEDIDO = models.IntegerField (primary_key= True)
+    EMPRESA = models.IntegerField ()
+    RAZAO_SOCIAL = models.CharField(max_length=100)
+    NOME = models.CharField(max_length=100)
+    DATA = models.DateTimeField()
+    VENDEDOR = models.CharField(max_length=30)
+    TOTAL_PAGO = models.FloatField()
+    TOTAL_PEDIDO = models.FloatField()
+    OBS = models.TextField()
+    POSICAO = models.CharField(max_length=15)
+    DTFECHAMENTO = models.DateTimeField()
+    TOTAL_PRODUTOS = models.FloatField()
+
+    class Meta:
+        unique_together = (('PEDIDO', 'EMPRESA'),)
+    
+    class Meta:
+        managed = False
+        db_table = 'VIEW_VMASTER'  
+
+class VIEW_DETAIL(models.Model):
+    PEDIDO = models.IntegerField (primary_key= True)
+    EMPRESA = models.IntegerField ()
+    AUTOID = models.IntegerField()
+    CODID = models.IntegerField()
+    COD_INTERNO = models.CharField(max_length=30)
+    COD_PEDIDO = models.CharField(max_length=30)
+    DESCRICAOPROD = models.CharField(max_length=70)
+    QUANT = models.FloatField()
+    VLR_GARANTIA = models.FloatField()
+    VLR_CUSTO = models.FloatField()
+    VLR_UNIT = models.FloatField()
+    VLR_TABELA = models.FloatField()
+    VLR_TOTAL = models.FloatField()
+
+    class Meta:
+        unique_together = (('PEDIDO', 'EMPRESA'),)
+    
+    class Meta:
+        managed = False
+        db_table = 'VIEW_VDETAIL'
