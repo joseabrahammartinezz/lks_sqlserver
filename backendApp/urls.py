@@ -25,6 +25,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include (router_banco.urls)),
     url(r'^pedidos$',views.PedidoMateriaisApi),
-    url(r'^pedidos/([0-9]+)$',views.PedidoMateriaisApi),    
+ #   url(r'^pedidos/([0-9]+)$',views.PedidoMateriaisApi), 
+   # url(r'^pedidos/([0-9]+)/([0-9]+)/$',views.PedidoMateriaisBusquedaApi), 
+    path('pedidos/PEDIDO=<int:numpedido>&EMPRESA=<int:empresa>',views.PedidoMateriaisBusquedaApi), 
+    url(r'^viewventas$/',views.ViewVentasApi),
+   # url(r'^viewventas/([0-9]+)$',views.ViewVentasApi),   
+    path('ventas/PEDIDO=<int:numpedido>&EMPRESA=<int:empresa>',views.ViewVentasBusqueddaApi),
     #path('facturas/', include ('factura.urls')),
 ]
