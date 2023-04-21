@@ -92,14 +92,14 @@ DATABASES = {
             'ENGINE': 'sql_server.pyodbc',
             'NAME': 'Ambar70',
             'USER': 'sa',
-#            'PASSWORD': '31n8731n', 
+            'PASSWORD': '31n8731n', 
 #            'PASSWORD': 'Acer56xxx%', 
 #            'HOST': '172.17.0.2',
-#            'HOST': 'lks.dyndns.info',
+            'HOST': 'lks.dyndns.info',
 #            'HOST': '181.115.210.12',
             #####   CONEXION AMAZON ######
-            'PASSWORD': '<Acer56xxx%>', 
-            'HOST': '52.86.173.62',
+#            'PASSWORD': '<Acer56xxx%>', 
+#            'HOST': '52.86.173.62',
             ###############################
             'PORT': '1433',
             'OPTIONS': {
