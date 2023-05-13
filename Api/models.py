@@ -95,7 +95,10 @@ class VIEW_MASTER(models.Model):
     PEDIDO = models.IntegerField (primary_key= True)
     EMPRESA = models.IntegerField ()
     RAZAO_SOCIAL = models.CharField(max_length=100)
+    COD_CLIENTE = models.IntegerField ()
+    RG_INSC = models.CharField(max_length=25)
     NOME = models.CharField(max_length=100)
+    EMAIL = models.CharField(max_length=60)
     DATA = models.DateTimeField()
     VENDEDOR = models.CharField(max_length=30)
     TOTAL_PAGO = models.FloatField()
@@ -104,7 +107,7 @@ class VIEW_MASTER(models.Model):
     POSICAO = models.CharField(max_length=15)
     DTFECHAMENTO = models.DateTimeField()
     TOTAL_PRODUTOS = models.FloatField()
-
+    
     class Meta:
         unique_together = (('PEDIDO', 'EMPRESA'),)
     
