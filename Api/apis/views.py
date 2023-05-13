@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
-
+from datetime import  datetime
 
 class GestorBancoApiViewSet(ModelViewSet):
     serializer_class = GestorBancoSerializer
@@ -73,3 +73,22 @@ def ViewVentasBusqueddaApi(request, numpedido, empresa):
             }).data, safe = False, status=200,
         )
     
+@csrf_exempt
+def ViewVfechasBusqueddaApi(request, fecha_ini, fecha_fin, empresa):
+    if request.method=='GET':
+        fecha_ini =  fecha_ini + ' 00:00:00'
+        fecha_fin =  fecha_fin + ' 23:59:59'
+        formatting = "%Y-%m-%d %H:%M:%S"
+        startdate = datetime.strptime(fecha_ini, formatting)
+        enddate = datetime.strptime(fecha_fin, formatting)
+#       print(datetime.strptime(string, formatting))
+        print (enddate)
+
+        master_info = VIEW_MASTER.objects.filter(DATA__range=(startdate,enddate))
+#        detail_info = ''
+        return JsonResponse(
+            DatosFacturaSerializer({
+                "cabecera" : master_info,
+                "detalle" : '',
+            }).data, safe = False, status=200,
+        )
